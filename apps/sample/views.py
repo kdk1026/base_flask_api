@@ -66,6 +66,7 @@ def delete_person(seq):
 
     person = next((p for p in person_list if p.seq == seq), None)
     if person:
+        person_list[:] = [p for p in person_list if p.seq != seq]
         return jsonify({"result": "success"})
 
     return jsonify({"error": "Not Found"}), 404
